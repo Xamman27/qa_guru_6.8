@@ -18,9 +18,9 @@ class Product:
         TODO Верните True если количество продукта больше или равно запрашиваемому
             и False в обратном случае
         """
-        if Cart.buy(quantity) <= Product.quantity:
+        if quantity <= self.quantity:
             return True
-        elif Cart.buy(quantity) > Product.quantity:
+        elif quantity > self.quantity:
             return False
         else:
             raise NotImplementedError
@@ -32,7 +32,7 @@ class Product:
             Если продуктов не хватает, то выбросите исключение ValueError
         """
         if Product.check_quantity(quantity):
-            Product.quantity -= Cart.buy(quantity)
+            Product.quantity -= quantity
         elif Product.check_quantity(quantity) is False:
             raise ValueError
         else:
@@ -96,5 +96,4 @@ class Cart:
         raise NotImplementedError
 
 potato = Product('potato', 20, "good",2)
-my_cart = Cart
-my_cart.add_product(Product.potato)
+potato.check_quantity(2)

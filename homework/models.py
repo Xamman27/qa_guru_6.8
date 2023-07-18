@@ -61,7 +61,7 @@ class Cart:
         if len(self.products)== 0:
             print('Корзина пуста')
         else:
-
+            print('Корзина:')
             for i_key, i_value in self.products.items():
                 print(f'{i_key.name} - {i_value} шт.')
 
@@ -98,10 +98,10 @@ class Cart:
 
     def get_total_price(self) -> float:
         total_price = 0
-        for i_key, i_value in self.items:
-            total_price += i_key.prise * i_value
-            print('Сумма', total_price)
-            return total_price
+        for i_key, i_value in self.products.items():
+            total_price += i_key.price * i_value
+        print('Сумма', total_price)
+        return total_price
         # raise NotImplementedError
 
     def buy(self):
@@ -127,3 +127,4 @@ my_cart.print_cart()
 my_cart.add_product(apple, 2)
 my_cart.add_product(potato)
 my_cart.print_cart()
+my_cart.get_total_price()

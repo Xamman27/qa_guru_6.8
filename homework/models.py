@@ -67,7 +67,7 @@ class Cart:
         else:
             self.products[product] = buy_count
         print(f'добавлен{self.products[product]} в количестве {buy_count}')
-            # raise NotImplementedError
+            #  raise NotImplementedError
 
     def remove_product(self, product: Product, remove_count=None):
         """

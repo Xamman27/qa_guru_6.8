@@ -108,5 +108,5 @@ class Cart:
         # raise NotImplementedError
 
 potato = Product('potato', 20, "good",2)
-my_cart =Cart
+my_cart = Cart()
 my_cart.add_product(potato, 2)

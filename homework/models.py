@@ -33,7 +33,7 @@ class Product:
         """
         if self.check_quantity(quantity):
             self.quantity -= quantity
-            print(f'Куплено {self.name} - {quantity}\nОстаток - {self.quantity}')
+            print(f'Куплено {self.name} - {quantity}\nОстаток на складе - {self.quantity} - ')
         elif self.check_quantity(quantity) is False:
             print('Не хватает товара.')
             raise ValueError
@@ -105,8 +105,8 @@ class Cart:
         # raise NotImplementedError
 
     def buy(self):
-        self.get_total_price()
-        print('Куплено')
+        for i_prod, i_quantity in self.products.items():
+            i_prod.buy(i_quantity)
         self.clear()
         """
         Метод покупки.
@@ -116,15 +116,17 @@ class Cart:
         # raise NotImplementedError
 
 
-# potato = Product('potato', 20, "good", 2)
-# apple = Product('apple', 22, "fruit", 5)
-# my_cart = Cart()
-# my_cart.add_product(potato, 2)
-# my_cart.remove_product(potato,1)
-# my_cart.print_cart()
-# my_cart.clear()
-# my_cart.print_cart()
-# my_cart.add_product(apple, 2)
-# my_cart.add_product(potato)
-# my_cart.print_cart()
-# my_cart.get_total_price()
+potato = Product('potato', 20, "good", 2)
+apple = Product('apple', 22, "fruit", 5)
+my_cart = Cart()
+my_cart.add_product(potato, 2)
+my_cart.remove_product(potato,1)
+my_cart.print_cart()
+my_cart.clear()
+my_cart.print_cart()
+my_cart.add_product(apple, 2)
+my_cart.add_product(potato)
+my_cart.print_cart()
+my_cart.get_total_price()
+print()
+my_cart.buy()

@@ -58,3 +58,34 @@ class TestCart:
         cart.add_product(product, 10)
         assert len(cart.products) == 1
         assert cart.products[product] == 11
+
+    def test_remove_product_with_count(self, product, cart):
+        cart.add_product(product, 100)
+        cart.remove_product(product, 10)
+        assert cart.products[product] == 100 - 10
+
+    def test_remove_product_without_count(self, product, cart):
+        cart.add_product(product, 100)
+        assert cart.products[product] == 100
+        cart.remove_product(product)
+        assert len(cart.products) == 0
+
+    def test_clear(self,product, cart):
+        cart.add_product(product, 100)
+        assert cart.products[product] == 100
+        cart.clear()
+        assert len(cart.products) == 0
+
+    def test_get_total_price(self, cart, product):
+        cart.add_product(product)
+        total_price = 0
+        total_price = [total_price + i_key.price * i_value for i_key, i_value in cart.products.items()]
+        assert cart.get_total_price() == total_price[0]
+
+    def test_cart_buy(self, product, cart):
+        cart.add_product(product, 10)
+        assert product.quantity == 1000
+        cart.buy()
+        assert len(cart.products) == 0
+        assert product.quantity == 1000 - 10
+

@@ -26,20 +26,17 @@ class TestProducts:
             assert product.quantity >= 1000
         if product.check_quantity(1001) is False:
             assert product.quantity < 1001
-        pass
 
     def test_product_buy(self, product):
         # TODO напишите проверки на метод buy
         product.buy(2)
         assert product.quantity == 1000 - 2
-        pass
 
     def test_product_buy_more_than_available(self, product):
         # TODO напишите проверки на метод buy,
         #  которые ожидают ошибку ValueError при попытке купить больше, чем есть в наличии
         with pytest.raises(ValueError):
             product.buy(1001)
-        pass
 
 
 class TestCart:

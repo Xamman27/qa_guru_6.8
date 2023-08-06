@@ -33,9 +33,9 @@ class Product:
         """
         if self.check_quantity(quantity):
             self.quantity -= quantity
-            print(f'Куплено {self.name} - {quantity}\nОстаток на складе - {self.quantity} - ')
+            # print(f'Куплено {self.name} - {quantity}\nОстаток на складе - {self.quantity} - ')
         elif self.check_quantity(quantity) is False:
-            print('Не хватает товара.')
+            # print('Не хватает товара.')
             raise ValueError
         else:
             raise NotImplementedError
@@ -84,7 +84,7 @@ class Cart:
         Если remove_count больше, чем количество продуктов в позиции, то удаляется вся позиция
         """
         if product in self.products:
-            if None == remove_count or remove_count > self.products[product]:
+            if None == remove_count or remove_count >= self.products[product]:
                 self.products.pop(product)
             else:
                 self.products[product] -= remove_count
@@ -119,14 +119,17 @@ class Cart:
 potato = Product('potato', 20, "good", 2)
 apple = Product('apple', 22, "fruit", 5)
 my_cart = Cart()
-my_cart.add_product(potato, 2)
-my_cart.remove_product(potato,1)
+my_cart.add_product(potato, 100)
+my_cart.remove_product(potato, 70)
 my_cart.print_cart()
-my_cart.clear()
-my_cart.print_cart()
-my_cart.add_product(apple, 2)
-my_cart.add_product(potato)
-my_cart.print_cart()
-my_cart.get_total_price()
-print()
-my_cart.buy()
+# my_cart.add_product(potato, 2)
+# my_cart.remove_product(potato,1)
+# my_cart.print_cart()
+# my_cart.clear()
+# my_cart.print_cart()
+# my_cart.add_product(apple, 2)
+# my_cart.add_product(potato)
+# my_cart.print_cart()
+# my_cart.get_total_price()
+# print()
+# my_cart.buy()

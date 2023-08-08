@@ -33,11 +33,12 @@ class TestProducts:
         product.buy(2)
         assert product.quantity == 1000 - 2
 
+
     def test_product_buy_more_than_available(self, product):
         # TODO напишите проверки на метод buy,
         #  которые ожидают ошибку ValueError при попытке купить больше, чем есть в наличии
         with pytest.raises(ValueError):
-            assert product.buy(1001) is ValueError
+             product.buy(1001) is ValueError
 
 
 class TestCart:
@@ -96,4 +97,12 @@ class TestCart:
         cart.buy()
         assert len(cart.products) == 0
         assert product.quantity == 1000 - 10
+
+    def test_cart_buy_error(self, product, cart):
+        cart.add_product(product, 1001)
+        with pytest.raises(ValueError):
+            cart.buy()
+
+
+
 
